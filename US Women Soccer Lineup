@@ -1,0 +1,47 @@
+CREATE TABLE soccer_players (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    age INTEGER,
+    position TEXT);
+    
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Alyssa Naeher", "34", "goalkeeper");
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Kelley O'Hara", "33", "defender");
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Sofia Huerta", "29", "defender");
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Becky Sauerbrunn", "37", "defender");
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Alana Cook", "25", "defender");
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Samantha Coffey", "23", "midfielder");
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Rose Lavelle", "27", "midfielder");
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Andi Kornieck", "23", "midfielder");
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Lindsey Horan", "28", "midfielder");
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Mallory Pugh", "24", "forward");
+INSERT INTO soccer_players (fullname, age, position) VALUES ("Alex Morgan", "37", "forward");
+
+CREATE TABLE player_stats (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    goals INTEGER,
+    assists INTEGER);
+    
+INSERT INTO player_stats (fullname, goals, assists) VALUES ("Alex Morgan", "2", "0");
+INSERT INTO player_stats (fullname, goals, assists) VALUES ("Sophia Smith", "2", "0");
+INSERT INTO player_stats (fullname, goals, assists) VALUES ("Kristie Mewis", "2", "0");
+INSERT INTO player_stats (fullname, goals, assists) VALUES ("Trinity Rodman", "1", "0");
+INSERT INTO player_stats (fullname, goals, assists) VALUES ("Ashley Sanchez", "1", "1");
+INSERT INTO player_stats (fullname, goals, assists) VALUES ("Mallory Pugh", "1", "2");
+INSERT INTO player_stats (fullname, goals, assists) VALUES ("Margaret Purce", "1", "0");
+INSERT INTO player_stats (fullname, goals, assists) VALUES ("Rose Lavelle", "1", "1");
+INSERT INTO player_stats (fullname, goals, assists) VALUES ("Emily Sonnett", "1", "1");
+INSERT INTO player_stats (fullname, goals, assists) VALUES ("Sofia Huerta", "0", "2");
+
+-Displays players on the starting lineup with either goals or assists.
+SELECT soccer_players.fullname, soccer_players.position, player_stats.goals, player_stats.assists
+FROM soccer_players
+JOIN player_stats
+ON soccer_players.fullname = player_stats.fullname;
+
+- Displays players in the lineup that have scored at least 1 goal.
+SELECT soccer_players.fullname, soccer_players.position, player_stats.goals, player_stats.assists
+FROM soccer_players
+JOIN player_stats
+ON soccer_players.fullname = player_stats.fullname
+WHERE player_stats.goals > "0";
